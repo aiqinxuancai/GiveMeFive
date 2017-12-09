@@ -1,0 +1,26 @@
+﻿<Controls:MetroWindow x:Class="GiveMeFive.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:GiveMeFive"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="243" Width="340" Loaded="Window_Loaded">
+    <Controls:MetroWindow.Resources>
+        <local:FontConverter x:Key="FontConverter"  />
+    </Controls:MetroWindow.Resources>
+    <Grid x:Name="gridMain">
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FFF1AAA6" Offset="1"/>
+                <GradientStop Color="#FFEC8E89"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+
+        <Label x:Name="labelName" Content="Name" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontConverter}}" Foreground="#FF1A2D27"/>
+        <Label x:Name="labelFrom" Content="Name" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="{Binding ActualHeight, Converter={StaticResource FontConverter}, ElementName=gridMain, Mode=OneWay}" Foreground="White" Margin="0,175,261,0"/>
+
+    </Grid>
+
+</Controls:MetroWindow>
