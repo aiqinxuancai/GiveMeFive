@@ -120,6 +120,10 @@ namespace GiveMeFive.Service
             for (int i = 0; i < luckSetting.count; i++)
             {
                 CompanyMember member = GetRandomMember(luckSetting.level);
+                if (member == null)
+                {
+                    continue;
+                }
                 member.isLuck = true;
                 member.luckName = luckSetting.name;
                 listMember.Add(member);
@@ -134,19 +138,23 @@ namespace GiveMeFive.Service
         public CompanyMember GetRandomMember(int level)
         {
             //获取随机index
-            byte[] guidBytes = Guid.NewGuid().ToByteArray();
-            int theSeed = BitConverter.ToInt32(guidBytes, 0);
-            Random rd = new Random(theSeed);
-            int index = rd.Next(0, m_listMember.Count - 1);
 
-            CompanyMember member = m_listMember[index];
-
-            if (member.isLuck == false && member.level <= level)
+            for (int i = 0; i < 10000; i++) //这里避免出现调用卡住 所以设个次数
             {
-                return member;
+                byte[] guidBytes = Guid.NewGuid().ToByteArray();
+                int theSeed = BitConverter.ToInt32(guidBytes, 0);
+                Random rd = new Random(theSeed);
+                int index = rd.Next(0, m_listMember.Count - 1);
+
+                CompanyMember member = m_listMember[index];
+
+                if (member.isLuck == false && member.level <= level)
+                {
+                    return member;
+                }
             }
 
-            return GetRandomMember(level);
+            return null; // GetRandomMember(level)
         }
 
         

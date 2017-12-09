@@ -66,12 +66,8 @@ namespace GiveMeFive.Service
                     }
                     m_listLuckSetting.Add(new LuckSetting() { name = lines[0], level = level, count = int.TryParse(lines[1], out int countInt) ? countInt : 1 });
                 }
-
             }
-
-
         }
-
 
     }
 }
