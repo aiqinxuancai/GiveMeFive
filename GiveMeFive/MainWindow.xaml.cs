@@ -52,9 +52,9 @@ namespace GiveMeFive
             //task.Start();
 
 
-            MemberManager manager = new MemberManager("");
+            //MemberManager manager = new MemberManager("");
 
-            var members = manager.GetRandomMembers(20);
+            //var members = manager.GetRandomMembers(20);
 
 
         }
@@ -65,31 +65,6 @@ namespace GiveMeFive
 
 
 
-    /// <summary>
-    /// 用于动态转换中心字体大小
-    /// </summary>
-    public class FontConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            try
-            {
-	            double gridHeight = (double)value;
-	            double fontSize = 24d / 240d * gridHeight;
-                return fontSize;
-            }
-            catch (System.Exception ex)
-            {
-                return 30;
-            }
-        }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Cutoff { get; set; }
-    }
 
 }
