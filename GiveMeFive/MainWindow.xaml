@@ -6,6 +6,7 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:GiveMeFive"
         xmlns:converter="clr-namespace:GiveMeFive.Converter"
+        xmlns:page="clr-namespace:GiveMeFive.Page"
         mc:Ignorable="d"
         Title="MainWindow" Height="900" Width="1440" Loaded="Window_Loaded">
     <Controls:MetroWindow.Resources>
@@ -23,7 +24,12 @@
         </Grid.Background>
 
 
-        <Grid x:Name="gridOneLuck">
+        <Grid x:Name="gridMainPage">
+            <page:MainPage x:Name="pageMainPage"></page:MainPage>
+        </Grid>
+        
+        <Grid x:Name="gridOneLuck" Visibility="Hidden">
+            <page:OneLuckPage x:Name="pageOneLuck"></page:OneLuckPage>
         </Grid>
 
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -8,7 +9,7 @@ namespace GiveMeFive.Service
     /// <summary>
     /// 奖项设置
     /// </summary>
-    class LuckSetting
+    public class LuckSetting
     {
         /// <summary>
         /// 抽奖名称
@@ -28,7 +29,7 @@ namespace GiveMeFive.Service
     }
 
 
-    class Luck
+    public class Luck
     {
         private List<LuckSetting> m_listLuckSetting;
 
@@ -39,11 +40,20 @@ namespace GiveMeFive.Service
             LoadLuck(path);
         }
 
+
+        public List<LuckSetting> GetLuck()
+        {
+            return m_listLuckSetting;
+        }
+
+
         public void LoadLuck(string filePath)
         {
 
             //奖项名称 抽取人数 等级（不填写默认为都可以抽到）
-            var fullText = "";
+            var fullText = File.ReadAllText(filePath);
+
+
             fullText = fullText.Replace("\t", " "); //制表符转换为空格
             fullText = fullText.Replace("  ", " "); //所有多余的空格会变为一个
 

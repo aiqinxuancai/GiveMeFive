@@ -12,6 +12,10 @@
         <converter:FontSizeConverterMini x:Key="FontSizeConverterMini"  />
     </UserControl.Resources>
     <Grid>
-            
+        <StackPanel x:Name="stackPanelLuckList" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Button Margin="0,10,0,0" Content="奖项名字" FontSize="36" />
+            <Button Margin="0,10,0,0" Content="奖项名字" FontSize="36" />
+            <Button Margin="0,10,0,0" Content="奖项名字" FontSize="36"/>
+        </StackPanel>
     </Grid>
 </UserControl>

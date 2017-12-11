@@ -23,5 +23,16 @@ namespace GiveMeFive.Page
         {
             InitializeComponent();
         }
+
+        public void SetLuckData()
+        {
+
+        }
+
+        public void SetMemberData()
+        {
+
+        }
+
     }
 }

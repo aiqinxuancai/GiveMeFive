@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GiveMeFive.Service
 {
-    class CompanyMember
+    public class CompanyMember
     {
         /// <summary>
         /// 工号
@@ -38,13 +38,13 @@ namespace GiveMeFive.Service
         /// </summary>
         public string luckName { set; get; }
     }
-    
+
 
 
     /// <summary>
     /// 成员管理类
     /// </summary>
-    class MemberManager
+    public class MemberManager
     {
         //载入所有player
 
@@ -56,11 +56,47 @@ namespace GiveMeFive.Service
             LoadMember(filePath);
         }
 
-        public void OutLuckMember(string filePath) 
+        /// <summary>
+        /// 导出中奖的成员
+        /// </summary>
+        public void OutLuckMember() 
         {
+            string full = string.Empty;
 
+            for (int i = 0; i < m_listMember.Count; i++)
+            {
+                if (m_listMember[i].isLuck)
+                {
+                    full += m_listMember[i].department + " " + m_listMember[i].name + " " + m_listMember[i].luckName + "\r\n";
+                }
+                
+            }
+
+            if (Directory.Exists(@".\Result") == false)
+            {
+                Directory.CreateDirectory(@".\Result");
+            }
+            File.WriteAllText(@".\Result\OutputLuckMember.txt", full);
         }
 
+        /// <summary>
+        /// 导出完整的成员列表
+        /// </summary>
+        public void OutFullMember()
+        {
+            string full = string.Empty;
+
+            for (int i = 0; i < m_listMember.Count; i++)
+            {
+                full += m_listMember[i].department + " " + m_listMember[i].name + " " + m_listMember[i].luckName +  "\r\n";
+            }
+
+            if (Directory.Exists(@".\Result") == false)
+            {
+                Directory.CreateDirectory(@".\Result");
+            }
+            File.WriteAllText(@".\Result\OutputFullMember.txt", full);
+        }
 
         public void LoadMember(string filePath)
         {
@@ -95,11 +131,11 @@ namespace GiveMeFive.Service
             }
 
             //以下为测试代码
-            for (int i = 1000; i < 1300; i++)
-            {
-                m_listMember.Add(new CompanyMember() { id = i, name = i.ToString(), level = 0, department = "团队" });
-            }
-
+            //for (int i = 1000; i < 1300; i++)
+            //{
+            //    m_listMember.Add(new CompanyMember() { id = i, name = i.ToString(), level = 0, department = "团队" });
+            //}
+            //OutFullMember();
         }
 
 
@@ -108,6 +144,36 @@ namespace GiveMeFive.Service
         {
             m_listMember.Count();
         }
+
+        public List<CompanyMember> GetRandomMembersForShow(LuckSetting luckSetting)
+        {
+            List<CompanyMember> listMember = new List<CompanyMember>();
+
+            if (luckSetting.count > m_listMember.Count)
+            {
+                luckSetting.count = m_listMember.Count;
+            }
+
+            while (listMember.Count < luckSetting.count)
+            {
+                CompanyMember member = GetRandomMember(luckSetting.level);
+                if (member == null)
+                {
+                    continue;
+                }
+                //member.isLuck = true;
+                //member.luckName = luckSetting.name;
+
+                if (listMember.Contains(member) == false)
+                {
+                    listMember.Add(member);
+                }
+            }
+
+ 
+            return listMember;
+        }
+
 
         /// <summary>
         /// 获取N个没有中过奖的成员
