@@ -182,9 +182,11 @@ namespace GiveMeFive.Service
         /// <returns></returns>
         public List<CompanyMember> GetRandomMembers(LuckSetting luckSetting)
         {
+            string full = string.Empty;
             List<CompanyMember> listMember = new List<CompanyMember>();
             for (int i = 0; i < luckSetting.count; i++)
             {
+                
                 CompanyMember member = GetRandomMember(luckSetting.level);
                 if (member == null)
                 {
@@ -192,8 +194,18 @@ namespace GiveMeFive.Service
                 }
                 member.isLuck = true;
                 member.luckName = luckSetting.name;
+                full += member.name + "\r\n";
                 listMember.Add(member);
             }
+
+            //写出结果到本地
+            if (Directory.Exists(@".\Result") == false)
+            {
+                Directory.CreateDirectory(@".\Result");
+            }
+            File.WriteAllText(@".\Result\" + luckSetting.name + "-" + DateTime.Now.Ticks +  ".txt", full);
+
+
             return listMember;
         }
 

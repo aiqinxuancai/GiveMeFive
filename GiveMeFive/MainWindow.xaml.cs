@@ -40,8 +40,7 @@ namespace GiveMeFive
             //this.WindowStyle = System.Windows.WindowStyle.None;
             //this.WindowState = System.Windows.WindowState.Maximized;
 
-            //初始化奖项及UI
-
+            //初始化奖项UI
             m_luck = new Luck(@".\Data\luck.txt");
             var luckList = m_luck.GetLuck();
             foreach (LuckSetting item in luckList)
@@ -92,13 +91,12 @@ namespace GiveMeFive
             switch (type)
             {
                 case PAGE_TYPE.PAGE_ONE:
-                    pageOneLuck.
-
-
-                    pageOneLuck.Stop();
+                    var listOne = m_memberManager.GetRandomMembers(pageOneLuck.m_luckSetting);
+                    pageOneLuck.Stop(listOne);
                     break;
                 case PAGE_TYPE.PAGE_MULTIPLE:
-                    pageMultipleLuck.Stop();
+                    var list = m_memberManager.GetRandomMembers(pageMultipleLuck.m_luckSetting);
+                    pageMultipleLuck.Stop(list);
                     break;
             }
         }

@@ -24,7 +24,7 @@ namespace GiveMeFive.Page
     public partial class MultipleLuckPage : UserControl
     {
         private Luck m_luck;
-        private LuckSetting m_luckSetting;
+        public LuckSetting m_luckSetting;
         private MemberManager m_memberManager;
         private bool m_stop;
         private Task m_task;
@@ -95,11 +95,9 @@ namespace GiveMeFive.Page
         public void Stop(List<CompanyMember> list)
         {
             m_stop = true;
-            Thread.Sleep(20);
-
+            m_task.Wait();
+            Thread.Sleep(10);
             UpdateName(list);
-
-
         }
 
     }

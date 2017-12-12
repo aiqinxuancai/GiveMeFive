@@ -24,9 +24,10 @@ namespace GiveMeFive.Page
     public partial class OneLuckPage : UserControl
     {
         private Luck m_luck;
-        private LuckSetting m_luckSetting;
+        public LuckSetting m_luckSetting;
         private MemberManager m_memberManager;
         private bool m_stop;
+        private Task m_task;
         private object m_lock = new object();
 
 
@@ -64,7 +65,7 @@ namespace GiveMeFive.Page
 
         public void Start()
         {
-            Task task = new Task(() =>
+            m_task = new Task(() =>
             {
                 m_stop = false;
 
@@ -79,13 +80,14 @@ namespace GiveMeFive.Page
                     Thread.Sleep(10);
                 }
             });
-            task.Start();
+            m_task.Start();
         }
 
         public void Stop(List<CompanyMember> list)
         {
             m_stop = true;
-            Thread.Sleep(20);
+            m_task.Wait();
+            Thread.Sleep(10);
             UpdateName(list[0]?.name);
         }
 
