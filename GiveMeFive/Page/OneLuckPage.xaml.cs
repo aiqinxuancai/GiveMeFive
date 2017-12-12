@@ -27,6 +27,8 @@ namespace GiveMeFive.Page
         private LuckSetting m_luckSetting;
         private MemberManager m_memberManager;
         private bool m_stop;
+        private object m_lock = new object();
+
 
         public OneLuckPage()
         {
@@ -49,6 +51,17 @@ namespace GiveMeFive.Page
             m_memberManager = memberManager;
         }
 
+        public void UpdateName(string name)
+        {
+            lock(m_lock)
+            {
+                this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    labelName.Content = name;
+                }));
+            }
+        }
+
         public void Start()
         {
             Task task = new Task(() =>
@@ -62,33 +75,20 @@ namespace GiveMeFive.Page
                     {
                         m_stop = true;
                     }
-                    this.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
-                        new Action(() =>
-                        {
-                            labelName.Content = list[0].name;
-                        }));
-                    Thread.Sleep(1);
+                    UpdateName(list[0]?.name);
+                    Thread.Sleep(10);
                 }
             });
             task.Start();
         }
 
-        public void Stop()
+        public void Stop(List<CompanyMember> list)
         {
             m_stop = true;
+            Thread.Sleep(20);
+            UpdateName(list[0]?.name);
         }
 
-        private void UserControl_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void gridMain_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        //按下空格键停止并显示一套最后的结果
 
 
     }

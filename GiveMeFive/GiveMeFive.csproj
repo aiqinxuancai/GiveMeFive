@@ -68,6 +68,7 @@
     <Compile Include="Page\OneLuckPage.xaml.cs">
       <DependentUpon>OneLuckPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Service\GlobalNotification.cs" />
     <Compile Include="Service\MemberManager.cs" />
     <Compile Include="Service\Luck.cs" />
     <Page Include="MainWindow.xaml">

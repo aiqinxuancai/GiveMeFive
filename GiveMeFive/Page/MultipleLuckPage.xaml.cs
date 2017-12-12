@@ -27,6 +27,8 @@ namespace GiveMeFive.Page
         private LuckSetting m_luckSetting;
         private MemberManager m_memberManager;
         private bool m_stop;
+        private Task m_task;
+        private object m_lock = new object();
 
         public MultipleLuckPage()
         {
@@ -50,28 +52,54 @@ namespace GiveMeFive.Page
             m_memberManager = memberManager;
         }
 
+
+        public void UpdateName(List<CompanyMember> list)
+        {
+            lock(m_lock)
+            {
+                this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+                {
+                    //移除全部label
+                    stackPanelMultipleLuck.Children.Clear();
+                    foreach (var item in list)
+                    {
+                        stackPanelMultipleLuck.Children.Add(new Label() { Content = item.name });
+                    }
+                }));
+            }
+
+        }
+
+
         public void Start()
         {
-            Task task = new Task(() =>
+            //添加对应的数据
+            m_task = new Task(() =>
             {
                 m_stop = false;
 
                 while (m_stop == false)
                 {
-                    this.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
-                        new Action(() =>
-                        {
-                            //labelName.Content = m_memberManager.GetRandomMembersForShow(m_luckSetting);
-                        }));
-                    Thread.Sleep(1);
+                    var list = m_memberManager.GetRandomMembersForShow(m_luckSetting);
+                    if (list.Count == 0)
+                    {
+                        m_stop = true;
+                    }
+                    UpdateName(list);
+                    Thread.Sleep(10);
                 }
             });
-            task.Start();
+            m_task.Start();
         }
 
-        public void Stop()
+        public void Stop(List<CompanyMember> list)
         {
             m_stop = true;
+            Thread.Sleep(20);
+
+            UpdateName(list);
+
+
         }
 
     }

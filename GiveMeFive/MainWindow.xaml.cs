@@ -32,37 +32,13 @@ namespace GiveMeFive
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-
             //this.Topmost = true;
             //this.WindowStyle = System.Windows.WindowStyle.None;
             //this.WindowState = System.Windows.WindowState.Maximized;
-
-            //Task task = new Task(() =>
-            //{
-            //    for (int i = 1000; i < 999999; i++)
-            //    {
-            //        this.Dispatcher.BeginInvoke(DispatcherPriority.Loaded,
-            //                                new Action(() =>
-            //                                {
-            //                                    labelName.Content = i;
-            //                                }));
-            //        Thread.Sleep(1);
-            //    }
-            //});
-            //task.Start();
-
-
-            //MemberManager manager = new MemberManager("");
-
-            //var members = manager.GetRandomMembers(20);
-
-            //stackPanelLuckList
 
             //初始化奖项及UI
 
@@ -78,10 +54,7 @@ namespace GiveMeFive
             //初始化玩家数据
             m_memberManager = new MemberManager(@".\Data\member.txt");
 
-
             ChangePage(PAGE_TYPE.PAGE_MAIN);
-            //ChangePage(PAGE_TYPE.PAGE_ONE);
-            //ChangePage(PAGE_TYPE.PAGE_MULTIPLE);
         }
 
         /// <summary>
@@ -103,11 +76,45 @@ namespace GiveMeFive
                 pageOneLuck.SetLuckSettingData(item);
                 pageOneLuck.Start();
             }
+            else
+            {
+                ChangePage(PAGE_TYPE.PAGE_MULTIPLE);
+                pageMultipleLuck.SetLuckData(m_luck);
+                pageMultipleLuck.SetMemberData(m_memberManager);
+                pageMultipleLuck.SetLuckSettingData(item);
+                pageMultipleLuck.Start();
 
-            //throw new NotImplementedException();
+            }
+        }
+
+        private void GetResult(PAGE_TYPE type)
+        {
+            switch (type)
+            {
+                case PAGE_TYPE.PAGE_ONE:
+                    pageOneLuck.
+
+
+                    pageOneLuck.Stop();
+                    break;
+                case PAGE_TYPE.PAGE_MULTIPLE:
+                    pageMultipleLuck.Stop();
+                    break;
+            }
         }
 
 
+
+
+        private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                GetResult(GetNowPageType());
+            }
+        }
+
+       
         private enum PAGE_TYPE{ PAGE_MAIN, PAGE_ONE, PAGE_MULTIPLE };
 
         private void ChangePage (PAGE_TYPE type)
@@ -131,8 +138,22 @@ namespace GiveMeFive
         }
 
 
-
-
+        private PAGE_TYPE GetNowPageType()
+        {
+            if (gridMainPage.Visibility == Visibility.Visible)
+            {
+                return PAGE_TYPE.PAGE_MAIN;
+            }
+            else if (gridOneLuck.Visibility == Visibility.Visible)
+            {
+                return PAGE_TYPE.PAGE_ONE;
+            } 
+            else if (gridMultipleLuck.Visibility == Visibility.Visible)
+            {
+                return PAGE_TYPE.PAGE_MULTIPLE;
+            }
+            return PAGE_TYPE.PAGE_MAIN;
+        }
 
     }
 
