@@ -1,7 +1,10 @@
-﻿using System;
+﻿using GiveMeFive.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace GiveMeFive.Page
 {
@@ -19,19 +23,55 @@ namespace GiveMeFive.Page
     /// </summary>
     public partial class MultipleLuckPage : UserControl
     {
+        private Luck m_luck;
+        private LuckSetting m_luckSetting;
+        private MemberManager m_memberManager;
+        private bool m_stop;
+
         public MultipleLuckPage()
         {
             InitializeComponent();
         }
 
-        public void SetLuckData()
-        {
 
+        public void SetLuckData(Luck luck)
+        {
+            m_luck = luck;
         }
 
-        public void SetMemberData()
+        public void SetLuckSettingData(LuckSetting luckSetting)
         {
+            m_luckSetting = luckSetting;
+        }
 
+
+        public void SetMemberData(MemberManager memberManager)
+        {
+            m_memberManager = memberManager;
+        }
+
+        public void Start()
+        {
+            Task task = new Task(() =>
+            {
+                m_stop = false;
+
+                while (m_stop == false)
+                {
+                    this.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                        new Action(() =>
+                        {
+                            //labelName.Content = m_memberManager.GetRandomMembersForShow(m_luckSetting);
+                        }));
+                    Thread.Sleep(1);
+                }
+            });
+            task.Start();
+        }
+
+        public void Stop()
+        {
+            m_stop = true;
         }
 
     }

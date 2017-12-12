@@ -51,31 +51,45 @@ namespace GiveMeFive.Page
 
         public void Start()
         {
-
             Task task = new Task(() =>
             {
-
                 m_stop = false;
 
                 while (m_stop == false)
                 {
-                    this.Dispatcher.BeginInvoke(DispatcherPriority.Loaded,
+                    var list = m_memberManager.GetRandomMembersForShow(m_luckSetting);
+                    if (list.Count == 0)
+                    {
+                        m_stop = true;
+                    }
+                    this.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
                         new Action(() =>
                         {
-                            labelName.Content = m_memberManager.GetRandomMembersForShow(m_luckSetting);
+                            labelName.Content = list[0].name;
                         }));
                     Thread.Sleep(1);
                 }
             });
             task.Start();
-
-
-
         }
 
         public void Stop()
         {
             m_stop = true;
         }
+
+        private void UserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void gridMain_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        //按下空格键停止并显示一套最后的结果
+
+
     }
 }

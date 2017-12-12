@@ -79,7 +79,9 @@ namespace GiveMeFive
             m_memberManager = new MemberManager(@".\Data\member.txt");
 
 
-
+            ChangePage(PAGE_TYPE.PAGE_MAIN);
+            //ChangePage(PAGE_TYPE.PAGE_ONE);
+            //ChangePage(PAGE_TYPE.PAGE_MULTIPLE);
         }
 
         /// <summary>
@@ -90,13 +92,44 @@ namespace GiveMeFive
         private void LuckButton_Click(object sender, RoutedEventArgs e)
         {
             LuckSetting item = (LuckSetting)((Button)sender).DataContext;
-            var result = m_memberManager.GetRandomMembers(item);
+            //var result = m_memberManager.GetRandomMembers(item);
 
             //切换到对应的抽奖页面并且开始滚动
+            if (item.count == 1)
+            {
+                ChangePage(PAGE_TYPE.PAGE_ONE);
+                pageOneLuck.SetLuckData(m_luck);
+                pageOneLuck.SetMemberData(m_memberManager);
+                pageOneLuck.SetLuckSettingData(item);
+                pageOneLuck.Start();
+            }
 
-
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
+
+
+        private enum PAGE_TYPE{ PAGE_MAIN, PAGE_ONE, PAGE_MULTIPLE };
+
+        private void ChangePage (PAGE_TYPE type)
+        {
+            gridMainPage.Visibility = Visibility.Hidden;
+            gridOneLuck.Visibility = Visibility.Hidden;
+            gridMultipleLuck.Visibility = Visibility.Hidden;
+
+            switch (type)
+            {
+                case PAGE_TYPE.PAGE_MAIN:
+                    gridMainPage.Visibility = Visibility.Visible;
+                    break;
+                case PAGE_TYPE.PAGE_ONE:
+                    gridOneLuck.Visibility = Visibility.Visible;
+                    break;
+                case PAGE_TYPE.PAGE_MULTIPLE:
+                    gridMultipleLuck.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
 
 
 

@@ -28,14 +28,17 @@
             <page:MainPage x:Name="pageMainPage"></page:MainPage>
         </Grid>
         
-        <Grid x:Name="gridOneLuck" Visibility="Hidden">
+        <Grid x:Name="gridOneLuck" >
             <page:OneLuckPage x:Name="pageOneLuck"></page:OneLuckPage>
         </Grid>
 
 
+        <Grid x:Name="gridMultipleLuck" >
+            <page:MultipleLuckPage x:Name="pageMultipleLuck"></page:MultipleLuckPage>
+        </Grid>
 
 
-        <Label x:Name="labelFrom" Content="米未传媒" HorizontalAlignment="Left"  VerticalAlignment="Bottom" FontSize="{Binding ActualHeight, Converter={StaticResource FontSizeConverterMini}, ElementName=gridMain, Mode=OneWay}" Foreground="White"/>
+        <Label x:Name="labelFrom" Content="米未传媒" HorizontalAlignment="Left"  VerticalAlignment="Bottom" FontSize="{Binding ActualHeight, Converter={StaticResource FontSizeConverterMini}, ElementName=gridMain, Mode=OneWay}" Foreground="White" Background="#FF79C9BA"/>
 
     </Grid>
 

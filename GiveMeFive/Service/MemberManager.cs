@@ -101,8 +101,8 @@ namespace GiveMeFive.Service
         public void LoadMember(string filePath)
         {
             m_listMember = new List<CompanyMember>();
-            //File.ReadAllText();
-            var fullText = "";
+            //
+            var fullText = File.ReadAllText(filePath);
             fullText = fullText.Replace("\t", " "); //制表符转换为空格
             fullText = fullText.Replace("  ", " "); //所有多余的空格会变为一个
 
