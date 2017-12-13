@@ -26,7 +26,7 @@ namespace GiveMeFive.Page
         private Luck m_luck;
         public LuckSetting m_luckSetting;
         private MemberManager m_memberManager;
-        private bool m_stop;
+        public bool m_stop;
         private Task m_task;
         private object m_lock = new object();
 
@@ -86,9 +86,12 @@ namespace GiveMeFive.Page
         public void Stop(List<CompanyMember> list)
         {
             m_stop = true;
-            m_task.Wait();
-            Thread.Sleep(10);
-            UpdateName(list[0]?.name);
+            if (list != null)
+            {
+                m_task.Wait();
+                Thread.Sleep(10);
+                UpdateName(list[0]?.name);
+            }
         }
 
 

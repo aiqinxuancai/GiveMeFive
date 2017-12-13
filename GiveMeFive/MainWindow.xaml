@@ -24,21 +24,22 @@
         </Grid.Background>
 
 
-        <Grid x:Name="gridMainPage">
+        <Grid x:Name="gridMainPage" Visibility="Hidden">
             <page:MainPage x:Name="pageMainPage"></page:MainPage>
         </Grid>
-        
-        <Grid x:Name="gridOneLuck" >
+
+        <Grid x:Name="gridOneLuck">
+            <Label Content="按[空格键]停止"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White"/>
             <page:OneLuckPage x:Name="pageOneLuck"></page:OneLuckPage>
+            <Label Content="按[B键]回到主画面"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White"/>
         </Grid>
 
 
-        <Grid x:Name="gridMultipleLuck" >
+        <Grid x:Name="gridMultipleLuck" Visibility="Hidden">
+            <Label Content="按[空格键]停止"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White"/>
             <page:MultipleLuckPage x:Name="pageMultipleLuck"></page:MultipleLuckPage>
+            <Label Content="按[B键]回到主画面"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White"/>
         </Grid>
-
-
-        <Label x:Name="labelFrom" Content="米未传媒" HorizontalAlignment="Left"  VerticalAlignment="Bottom" FontSize="{Binding ActualHeight, Converter={StaticResource FontSizeConverterMini}, ElementName=gridMain, Mode=OneWay}" Foreground="White" Background="#FF79C9BA"/>
 
     </Grid>
 

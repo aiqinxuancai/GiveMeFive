@@ -13,6 +13,7 @@
     </UserControl.Resources>
     <Grid x:Name="gridMain" Background="#00000000">
         <Label x:Name="labelName" Content="Name" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverter}}" Foreground="#FF1A2D27"/>
+        <Label x:Name="labelLuckName" Content="LuckName"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini}}" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Margin="0,20,0,0"/>
 
     </Grid>
 </UserControl>

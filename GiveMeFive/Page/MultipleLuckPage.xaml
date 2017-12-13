@@ -13,11 +13,12 @@
     </UserControl.Resources>
 
     <Grid x:Name="gridMultipleLuck">
-        <StackPanel  x:Name="stackPanelMultipleLuck" Orientation="Horizontal">
-            <Label Content="1111" />
-            <Label Content="1111" />
-            <Label Content="1111" />
-        </StackPanel>
+        <WrapPanel x:Name="stackPanelMultipleLuck" Orientation="Horizontal" Margin="90,100,90,100">
+            <Label Content="11111111" FontSize="26" />
+            <Label Content="11111111" FontSize="26"/>
+        </WrapPanel>
+        <Label x:Name="labelLuckName" Content="LuckName"  FontSize="{Binding ActualHeight, ElementName=gridMultipleLuck, Mode=OneWay , Converter={StaticResource FontSizeConverterMini}}" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Margin="0,20,0,0"/>
+
     </Grid>
 
 </UserControl>

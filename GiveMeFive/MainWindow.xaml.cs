@@ -91,12 +91,19 @@ namespace GiveMeFive
             switch (type)
             {
                 case PAGE_TYPE.PAGE_ONE:
-                    var listOne = m_memberManager.GetRandomMembers(pageOneLuck.m_luckSetting);
-                    pageOneLuck.Stop(listOne);
+                    if (pageOneLuck.m_stop == false)
+                    {
+                        var listOne = m_memberManager.GetRandomMembers(pageOneLuck.m_luckSetting);
+                        pageOneLuck.Stop(listOne);
+                    }
                     break;
                 case PAGE_TYPE.PAGE_MULTIPLE:
-                    var list = m_memberManager.GetRandomMembers(pageMultipleLuck.m_luckSetting);
-                    pageMultipleLuck.Stop(list);
+                    if (pageMultipleLuck.m_stop == false)
+                    {
+                        var list = m_memberManager.GetRandomMembers(pageMultipleLuck.m_luckSetting);
+                        pageMultipleLuck.Stop(list);
+                    }
+
                     break;
             }
         }
@@ -109,6 +116,21 @@ namespace GiveMeFive
             if (e.Key == Key.Space)
             {
                 GetResult(GetNowPageType());
+            }
+            if (e.Key == Key.Enter)
+            {
+                switch (GetNowPageType())
+                {
+                    case PAGE_TYPE.PAGE_ONE:
+                        pageOneLuck.Stop(null);
+                        ChangePage(PAGE_TYPE.PAGE_MAIN);
+                        break;
+                    case PAGE_TYPE.PAGE_MULTIPLE:
+                        pageMultipleLuck.Stop(null);
+                        ChangePage(PAGE_TYPE.PAGE_MAIN);
+                        break;
+                }
+                
             }
         }
 
