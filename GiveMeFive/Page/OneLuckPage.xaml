@@ -6,12 +6,12 @@
              xmlns:local="clr-namespace:GiveMeFive.Page"
              xmlns:converter="clr-namespace:GiveMeFive.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="900" d:DesignWidth="1440" KeyDown="UserControl_KeyDown">
+             d:DesignHeight="900" d:DesignWidth="1440">
     <UserControl.Resources>
         <converter:FontSizeConverter x:Key="FontSizeConverter"  />
         <converter:FontSizeConverterMini x:Key="FontSizeConverterMini"  />
     </UserControl.Resources>
-    <Grid x:Name="gridMain" Background="#00000000" KeyDown="gridMain_KeyDown" >
+    <Grid x:Name="gridMain" Background="#00000000">
         <Label x:Name="labelName" Content="Name" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverter}}" Foreground="#FF1A2D27"/>
 
     </Grid>
