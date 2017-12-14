@@ -8,7 +8,7 @@
         xmlns:converter="clr-namespace:GiveMeFive.Converter"
         xmlns:page="clr-namespace:GiveMeFive.Page"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1440" Loaded="Window_Loaded" KeyDown="MetroWindow_KeyDown">
+        Title="MainWindow" Height="900" Width="1440" Loaded="Window_Loaded" KeyDown="MetroWindow_KeyDown" IgnoreTaskbarOnMaximize="True">
     <Controls:MetroWindow.Resources>
         <converter:FontSizeConverter x:Key="FontSizeConverter"  />
         <converter:FontSizeConverterMini x:Key="FontSizeConverterMini"  />
@@ -25,11 +25,13 @@
         </Grid.Background>
 
 
-        <Grid x:Name="gridMainPage" Visibility="Hidden">
+        <Grid x:Name="gridMainPage" >
             <page:MainPage x:Name="pageMainPage"></page:MainPage>
+            <Label Content="按[F1键]全屏"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini8}}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White"/>
+
         </Grid>
 
-        <Grid x:Name="gridOneLuck">
+        <Grid x:Name="gridOneLuck" Visibility="Hidden">
             <Label Content="按[空格键]停止"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini8}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White"/>
             <page:OneLuckPage x:Name="pageOneLuck"></page:OneLuckPage>
             <Label Content="按[回车键]回到主画面"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini8}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White"/>

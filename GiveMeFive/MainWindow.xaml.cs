@@ -36,9 +36,7 @@ namespace GiveMeFive
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //this.Topmost = true;
-            //this.WindowStyle = System.Windows.WindowStyle.None;
-            //this.WindowState = System.Windows.WindowState.Maximized;
+
 
             //初始化奖项UI
             m_luck = new Luck(@".\Data\luck.txt");
@@ -131,6 +129,24 @@ namespace GiveMeFive
                         break;
                 }
                 
+            }
+            if (e.Key == Key.F1)
+            {
+                if (this.Topmost == false)
+                {
+                    this.Topmost = true;
+                    //this.WindowStyle = System.Windows.WindowStyle.None;
+                    this.ShowTitleBar = false;
+                    this.WindowState = System.Windows.WindowState.Maximized;
+                }
+                else
+                {
+                    this.Topmost = false;
+                    //this.WindowStyle = System.Windows.WindowStyle.None;
+                    this.ShowTitleBar = true;
+                    this.WindowState = System.Windows.WindowState.Normal;
+                }
+
             }
         }
 
