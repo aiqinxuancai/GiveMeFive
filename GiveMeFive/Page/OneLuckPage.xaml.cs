@@ -44,6 +44,7 @@ namespace GiveMeFive.Page
         public void SetLuckSettingData(LuckSetting luckSetting)
         {
             m_luckSetting = luckSetting;
+            labelLuckName.Content = luckSetting.name;
         }
 
 
