@@ -43,8 +43,9 @@ namespace GiveMeFive
             var luckList = m_luck.GetLuck();
             foreach (LuckSetting item in luckList)
             {
-                Button button = new Button() { Content = item.name, FontSize = 36, Margin = new Thickness(0, 10, 0, 0), DataContext = item };
+                Button button = new Button() { Content = item.name, FontSize = 36, Margin = new Thickness(0, 10, 0, 0), DataContext = item};
                 button.Click += LuckButton_Click;
+                button.Foreground = new SolidColorBrush(Color.FromArgb(210, 0, 0, 0));
                 pageMainPage.stackPanelLuckList.Children.Add(button);
             }
 
