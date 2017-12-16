@@ -3,6 +3,7 @@ using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -36,7 +37,19 @@ namespace GiveMeFive
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (File.Exists(@".\Data\luck.txt") == false)
+            {
+                MessageBox.Show("没有找到奖项设置文件：.\Data\luck.txt");
+                this.Close();
+                return;
+            }
 
+            if (File.Exists(@".\Data\member.txt") == false)
+            {
+                MessageBox.Show("没有找到成员设置文件：.\Data\member.txt");
+                this.Close();
+                return;
+            }
 
             //初始化奖项UI
             m_luck = new Luck(@".\Data\luck.txt");
