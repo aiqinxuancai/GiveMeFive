@@ -39,14 +39,14 @@ namespace GiveMeFive
         {
             if (File.Exists(@".\Data\luck.txt") == false)
             {
-                MessageBox.Show("没有找到奖项设置文件：.\Data\luck.txt");
+                MessageBox.Show(@"没有找到奖项设置文件：.\Data\luck.txt");
                 this.Close();
                 return;
             }
 
             if (File.Exists(@".\Data\member.txt") == false)
             {
-                MessageBox.Show("没有找到成员设置文件：.\Data\member.txt");
+                MessageBox.Show(@"没有找到成员设置文件：.\Data\member.txt");
                 this.Close();
                 return;
             }
