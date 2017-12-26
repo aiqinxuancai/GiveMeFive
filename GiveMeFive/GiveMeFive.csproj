@@ -68,6 +68,9 @@
     <Compile Include="Page\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Page\MultipleLuckMemberCell.xaml.cs">
+      <DependentUpon>MultipleLuckMemberCell.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Page\MultipleLuckPage.xaml.cs">
       <DependentUpon>MultipleLuckPage.xaml</DependentUpon>
     </Compile>
@@ -90,6 +93,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Page\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page\MultipleLuckMemberCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,8 +12,10 @@
         <converter:FontSizeConverterMini x:Key="FontSizeConverterMini"  />
     </UserControl.Resources>
     <Grid>
+
         <StackPanel x:Name="stackPanelLuckList" HorizontalAlignment="Center" VerticalAlignment="Center" >
 
         </StackPanel>
+        <Label x:Name="labelTitle" Content="米未传媒2017年会" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="72" Margin="0,80,0,0" Foreground="#B2000000"/>
     </Grid>
 </UserControl>

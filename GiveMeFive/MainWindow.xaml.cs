@@ -65,7 +65,16 @@ namespace GiveMeFive
             //初始化玩家数据
             m_memberManager = new MemberManager(@".\Data\member.txt");
 
+            if (File.Exists(@".\Data\title.txt"))
+            {
+                pageMainPage.labelTitle.Content = File.ReadAllText(@".\Data\title.txt");
+            }
+
+            pageMainPage.labelTitle.FontSize = 24d / 240 * this.ActualHeight;
+
+
             ChangePage(PAGE_TYPE.PAGE_MAIN);
+
         }
 
         /// <summary>
@@ -205,6 +214,10 @@ namespace GiveMeFive
             return PAGE_TYPE.PAGE_MAIN;
         }
 
+        private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            pageMainPage.labelTitle.FontSize = 22d / 240 * this.ActualHeight;
+        }
     }
 
 

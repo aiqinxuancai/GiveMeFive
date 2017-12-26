@@ -72,7 +72,11 @@ namespace GiveMeFive.Page
 
                     foreach (var item in list)
                     {
-                        stackPanelMultipleLuck.Children.Add(new Label() { Content = item.name, FontSize = fontSize });
+
+                        //stackPanelMultipleLuck.Children.Add(new Label() { Content = item.name, FontSize = fontSize });
+
+                        stackPanelMultipleLuck.Children.Add(new MultipleLuckMemberCell(item.name, item.name));
+
                     }
                 }));
             }
