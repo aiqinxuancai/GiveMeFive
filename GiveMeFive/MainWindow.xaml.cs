@@ -112,11 +112,11 @@ namespace GiveMeFive
 
         private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space)
+            if (e.Key == Key.Enter)
             {
                 GetResult(GetNowPageType());
             }
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Escape)
             {
                 switch (GetNowPageType())
                 {

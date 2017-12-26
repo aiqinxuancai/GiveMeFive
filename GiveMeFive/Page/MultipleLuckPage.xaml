@@ -13,7 +13,7 @@
     </UserControl.Resources>
 
     <Grid x:Name="gridMultipleLuck">
-        <WrapPanel x:Name="stackPanelMultipleLuck" Orientation="Horizontal" Margin="90,100,90,100">
+        <WrapPanel x:Name="stackPanelMultipleLuck" Orientation="Horizontal" Margin="160,100,160,100" HorizontalAlignment="Center">
             <Label Content="11111111" FontSize="26" />
             <Label Content="11111111" FontSize="26"/>
         </WrapPanel>

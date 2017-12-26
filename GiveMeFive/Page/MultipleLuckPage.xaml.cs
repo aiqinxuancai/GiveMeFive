@@ -58,13 +58,21 @@ namespace GiveMeFive.Page
         {
             lock(m_lock)
             {
+
+                
+
                 this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
+                    double fontSize = 10d / 240d * this.ActualHeight;
+
                     //移除全部label
                     stackPanelMultipleLuck.Children.Clear();
+
+
+
                     foreach (var item in list)
                     {
-                        stackPanelMultipleLuck.Children.Add(new Label() { Content = item.name, FontSize = 26 });
+                        stackPanelMultipleLuck.Children.Add(new Label() { Content = item.name, FontSize = fontSize });
                     }
                 }));
             }

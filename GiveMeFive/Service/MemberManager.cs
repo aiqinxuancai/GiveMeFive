@@ -194,7 +194,7 @@ namespace GiveMeFive.Service
                 }
                 member.isLuck = true;
                 member.luckName = luckSetting.name;
-                full += member.name + "\r\n";
+                full += member.department + " " +  member.name + "\r\n";
                 listMember.Add(member);
             }
 

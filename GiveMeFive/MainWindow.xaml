@@ -32,16 +32,16 @@
         </Grid>
 
         <Grid x:Name="gridOneLuck" Visibility="Hidden">
-            <Label Content="按[空格键]停止"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini8}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White"/>
+            <Label Content="按[回车键]停止"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini8}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White"/>
             <page:OneLuckPage x:Name="pageOneLuck"></page:OneLuckPage>
-            <Label Content="按[回车键]回到主画面"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini8}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White"/>
+            <Label Content="按[ESC]回到主画面"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini8}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White"/>
         </Grid>
 
 
         <Grid x:Name="gridMultipleLuck" Visibility="Hidden">
-            <Label Content="按[空格键]停止"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini8}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White"/>
+            <Label Content="按[回车键]停止"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini8}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White"/>
             <page:MultipleLuckPage x:Name="pageMultipleLuck"></page:MultipleLuckPage>
-            <Label Content="按[回车键]回到主画面"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini8}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White"/>
+            <Label Content="按[ESC]回到主画面"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini8}}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White"/>
         </Grid>
 
     </Grid>
