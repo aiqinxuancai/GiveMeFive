@@ -9,7 +9,7 @@
     <Grid>
 
         <StackPanel >
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding MemberName}" VerticalAlignment="Top" Margin="5,2,0,0"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding MemberDepartment}" VerticalAlignment="Top" Margin="5,2,0,0" Foreground="#CC000000"/>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding MemberName}" VerticalAlignment="Bottom" Height="32" Margin="5,3,0,0" FontSize="22"/>
         </StackPanel>
 

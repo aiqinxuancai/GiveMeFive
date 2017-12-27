@@ -1,6 +1,7 @@
 ﻿using GiveMeFive.Service;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -59,24 +60,13 @@ namespace GiveMeFive.Page
             lock(m_lock)
             {
 
-                
-
                 this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
                     double fontSize = 10d / 240d * this.ActualHeight;
-
-                    //移除全部label
-                    stackPanelMultipleLuck.Children.Clear();
-
-
-
-                    foreach (var item in list)
+                    for (int i = 0; i < list.Count; i++)
                     {
-
-                        //stackPanelMultipleLuck.Children.Add(new Label() { Content = item.name, FontSize = fontSize });
-
-                        stackPanelMultipleLuck.Children.Add(new MultipleLuckMemberCell(item.name, item.name));
-
+                        ((MultipleLuckMemberCell)stackPanelMultipleLuck.Children[i]).MemberName = list[i].name;
+                        ((MultipleLuckMemberCell)stackPanelMultipleLuck.Children[i]).MemberDepartment = list[i].department;
                     }
                 }));
             }
@@ -86,6 +76,15 @@ namespace GiveMeFive.Page
 
         public void Start()
         {
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
+            {
+                for (int i = 0; i < m_luckSetting.count; i++)
+                {
+                    stackPanelMultipleLuck.Children.Add(new MultipleLuckMemberCell("1","2"));
+                }
+            }));
+
+
             //添加对应的数据
             m_task = new Task(() =>
             {
@@ -98,6 +97,10 @@ namespace GiveMeFive.Page
                     {
                         m_stop = true;
                     }
+
+
+                    //stackPanelMultipleLuck
+
                     UpdateName(list);
                     Thread.Sleep(10);
                 }

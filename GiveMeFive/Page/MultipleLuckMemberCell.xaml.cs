@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -17,10 +18,37 @@ namespace GiveMeFive.Page
     /// <summary>
     /// MultipleLuckMemberCell.xaml 的交互逻辑
     /// </summary>
-    public partial class MultipleLuckMemberCell : UserControl
+    public partial class MultipleLuckMemberCell : UserControl, INotifyPropertyChanged
     {
-        public string MemberName { set; get; }
-        public string MemberDepartment { set; get; }
+        public string _memberName;
+        public string _memberDepartment;
+
+        public string MemberName
+        {
+            get { return _memberName; }
+            set
+            {
+                if (_memberName != value)
+                {
+                    _memberName = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("MemberName"));
+                }
+            }
+        }
+
+        public string MemberDepartment
+        {
+            get { return _memberDepartment; }
+            set
+            {
+                if (_memberDepartment != value)
+                {
+                    _memberDepartment = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("MemberDepartment"));
+                }
+            }
+        }
+
 
         public MultipleLuckMemberCell(string memberName, string memberDepartment)
         {
@@ -30,14 +58,15 @@ namespace GiveMeFive.Page
             this.DataContext = this;
             InitializeComponent();
 
-
-
         }
 
 
         public MultipleLuckMemberCell()
         {
+            this.DataContext = this;
             InitializeComponent();
         }
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
     }
 }

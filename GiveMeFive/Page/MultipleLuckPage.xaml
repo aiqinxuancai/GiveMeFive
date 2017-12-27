@@ -14,8 +14,7 @@
 
     <Grid x:Name="gridMultipleLuck">
         <WrapPanel x:Name="stackPanelMultipleLuck" Orientation="Horizontal" Margin="160,100,160,100" HorizontalAlignment="Center">
-            <Label Content="11111111" FontSize="26" />
-            <Label Content="11111111" FontSize="26"/>
+
         </WrapPanel>
         <Label x:Name="labelLuckName" Content="LuckName"  FontSize="{Binding ActualHeight, ElementName=gridMultipleLuck, Mode=OneWay , Converter={StaticResource FontSizeConverterMini}}" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Margin="0,20,0,0"/>
 
