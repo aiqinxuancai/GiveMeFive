@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GiveMeFive.Page"
+             xmlns:localcell="clr-namespace:GiveMeFive.Page.Cell"
              xmlns:converter="clr-namespace:GiveMeFive.Converter"
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1440">
@@ -12,8 +13,9 @@
         <converter:FontSizeConverterMini x:Key="FontSizeConverterMini"  />
     </UserControl.Resources>
     <Grid x:Name="gridMain" Background="#00000000">
-        <Label x:Name="labelName" Content="Name" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverter}}" Foreground="#FF1A2D27"/>
-        <Label x:Name="labelLuckName" Content="LuckName"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini}}" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Margin="0,20,0,0"/>
 
+        <localcell:OneLuckMemberCell  x:Name="oneLuckMemberCell" HorizontalAlignment="Center" VerticalAlignment="Center" MemberName="Name"></localcell:OneLuckMemberCell>
+        
+        <Label x:Name="labelLuckName" Content="LuckName"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini}}" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Margin="0,20,0,0"/>
     </Grid>
 </UserControl>

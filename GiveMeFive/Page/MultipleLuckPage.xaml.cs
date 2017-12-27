@@ -16,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using GiveMeFive.Page.Cell;
+
 
 namespace GiveMeFive.Page
 {
@@ -76,11 +78,14 @@ namespace GiveMeFive.Page
 
         public void Start()
         {
+            stackPanelMultipleLuck.Children.Clear();
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
             {
                 for (int i = 0; i < m_luckSetting.count; i++)
                 {
-                    stackPanelMultipleLuck.Children.Add(new MultipleLuckMemberCell("1","2"));
+                    MultipleLuckMemberCell cell = new MultipleLuckMemberCell();
+              
+                    stackPanelMultipleLuck.Children.Add(cell);
                 }
             }));
 

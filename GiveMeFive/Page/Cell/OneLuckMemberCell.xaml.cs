@@ -13,15 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GiveMeFive.Page
+namespace GiveMeFive.Page.Cell
 {
     /// <summary>
-    /// MultipleLuckMemberCell.xaml 的交互逻辑
+    /// OneLuckMemberCell.xaml 的交互逻辑
     /// </summary>
-    public partial class MultipleLuckMemberCell : UserControl, INotifyPropertyChanged
+    public partial class OneLuckMemberCell : UserControl, INotifyPropertyChanged
     {
         public string _memberName;
         public string _memberDepartment;
+
 
         public string MemberName
         {
@@ -32,6 +33,7 @@ namespace GiveMeFive.Page
                 {
                     _memberName = value;
                     PropertyChanged(this, new PropertyChangedEventArgs("MemberName"));
+
                 }
             }
         }
@@ -48,20 +50,16 @@ namespace GiveMeFive.Page
                 }
             }
         }
-
-
-        public MultipleLuckMemberCell(string memberName, string memberDepartment)
+        public OneLuckMemberCell(string memberName, string memberDepartment)
         {
             this.MemberName = memberName;
             this.MemberDepartment = memberDepartment;
-
             this.DataContext = this;
             InitializeComponent();
-
         }
 
 
-        public MultipleLuckMemberCell()
+        public OneLuckMemberCell()
         {
             this.DataContext = this;
             InitializeComponent();

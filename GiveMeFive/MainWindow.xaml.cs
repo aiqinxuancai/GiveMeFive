@@ -30,6 +30,7 @@ namespace GiveMeFive
         private Luck m_luck;
         private MemberManager m_memberManager;
 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -217,6 +218,12 @@ namespace GiveMeFive
         private void MetroWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             pageMainPage.labelTitle.FontSize = 22d / 240 * this.ActualHeight;
+
+            //this.windowHeight = this.ActualHeight;
+
+            GlobalNotification.Default.Post("WindowHeightChange", this.ActualHeight);
+
+
         }
     }
 

@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using GiveMeFive.Page.Cell;
+
 
 namespace GiveMeFive.Page
 {
@@ -53,13 +55,15 @@ namespace GiveMeFive.Page
             m_memberManager = memberManager;
         }
 
-        public void UpdateName(string name)
+        public void UpdateName(string name, string department)
         {
             lock(m_lock)
             {
                 this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                 {
-                    labelName.Content = name;
+                    oneLuckMemberCell.MemberName = name;
+                    oneLuckMemberCell.MemberDepartment = department;
+
                 }));
             }
         }
@@ -77,7 +81,7 @@ namespace GiveMeFive.Page
                     {
                         m_stop = true;
                     }
-                    UpdateName(list[0]?.name);
+                    UpdateName(list[0]?.name, list[0]?.department);
                     Thread.Sleep(10);
                 }
             });
@@ -91,7 +95,7 @@ namespace GiveMeFive.Page
             {
                 m_task.Wait();
                 Thread.Sleep(10);
-                UpdateName(list[0]?.name);
+                UpdateName(list[0]?.name, list[0]?.department);
             }
         }
 
