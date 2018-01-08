@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace GiveMeFive.Page.Cell
 {
     /// <summary>
-    /// MultipleLuckMemberCellVersionTwo.xaml 的交互逻辑
+    /// 左右排序的抽奖Cell
     /// </summary>
     public partial class MultipleLuckMemberCellVersionTwo : UserControl, INotifyPropertyChanged
     {

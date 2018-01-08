@@ -21,8 +21,9 @@ namespace GiveMeFive.Page.Cell
         MAX = 0,
         MIN = 1
     }
+
     /// <summary>
-    /// MultipleLuckMemberCell.xaml 的交互逻辑
+    /// 上下排序的抽奖Cell
     /// </summary>
     public partial class MultipleLuckMemberCell : UserControl, INotifyPropertyChanged
     {
