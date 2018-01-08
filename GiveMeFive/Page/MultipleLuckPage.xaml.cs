@@ -67,8 +67,8 @@ namespace GiveMeFive.Page
                     double fontSize = 10d / 240d * this.ActualHeight;
                     for (int i = 0; i < list.Count; i++)
                     {
-                        ((MultipleLuckMemberCell)stackPanelMultipleLuck.Children[i]).MemberName = list[i].name;
-                        ((MultipleLuckMemberCell)stackPanelMultipleLuck.Children[i]).MemberDepartment = list[i].department;
+                        ((MultipleLuckMemberCellVersionTwo)stackPanelMultipleLuck.Children[i]).MemberName = list[i].name;
+                        ((MultipleLuckMemberCellVersionTwo)stackPanelMultipleLuck.Children[i]).MemberDepartment = list[i].department;
                     }
                 }));
             }
@@ -83,7 +83,7 @@ namespace GiveMeFive.Page
             {
                 for (int i = 0; i < m_luckSetting.count; i++)
                 {
-                    MultipleLuckMemberCell cell = new MultipleLuckMemberCell();
+                    MultipleLuckMemberCellVersionTwo cell = new MultipleLuckMemberCellVersionTwo();
               
                     stackPanelMultipleLuck.Children.Add(cell);
                 }

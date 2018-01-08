@@ -16,6 +16,6 @@
 
         <localcell:OneLuckMemberCell  x:Name="oneLuckMemberCell" HorizontalAlignment="Center" VerticalAlignment="Center" MemberName="Name"></localcell:OneLuckMemberCell>
         
-        <Label x:Name="labelLuckName" Content="LuckName"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini}}" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Margin="0,20,0,0"/>
+        <Label x:Name="labelLuckName" Content="LuckName"  FontSize="{Binding ActualHeight, ElementName=gridMain, Mode=OneWay , Converter={StaticResource FontSizeConverterMini}}" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#CC000000" Margin="0,20,0,0"/>
     </Grid>
 </UserControl>

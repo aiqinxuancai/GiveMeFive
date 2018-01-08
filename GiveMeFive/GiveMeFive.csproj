@@ -65,6 +65,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converter\FontSizeConverter.cs" />
+    <Compile Include="Page\Cell\MultipleLuckMemberCellVersionTwo.xaml.cs">
+      <DependentUpon>MultipleLuckMemberCellVersionTwo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Page\Cell\OneLuckMemberCell.xaml.cs">
       <DependentUpon>OneLuckMemberCell.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Page\Cell\MultipleLuckMemberCellVersionTwo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Page\Cell\OneLuckMemberCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

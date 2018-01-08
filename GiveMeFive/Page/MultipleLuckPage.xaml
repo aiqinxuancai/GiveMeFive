@@ -7,17 +7,17 @@
              xmlns:localcell="clr-namespace:GiveMeFive.Page.Cell"
              xmlns:converter="clr-namespace:GiveMeFive.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="900" d:DesignWidth="1440">
+             d:DesignHeight="900" d:DesignWidth="1440" Margin="0,0,0,100">
     <UserControl.Resources>
         <converter:FontSizeConverter x:Key="FontSizeConverter"  />
         <converter:FontSizeConverterMini x:Key="FontSizeConverterMini"  />
     </UserControl.Resources>
 
     <Grid x:Name="gridMultipleLuck">
-        <WrapPanel x:Name="stackPanelMultipleLuck" Orientation="Horizontal" Margin="160,100,160,100" HorizontalAlignment="Center">
+        <WrapPanel x:Name="stackPanelMultipleLuck" Orientation="Vertical" Margin="160,100,160,100" HorizontalAlignment="Center" VerticalAlignment="Center">
 
         </WrapPanel>
-        <Label x:Name="labelLuckName" Content="LuckName"  FontSize="{Binding ActualHeight, ElementName=gridMultipleLuck, Mode=OneWay , Converter={StaticResource FontSizeConverterMini}}" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Margin="0,20,0,0"/>
+        <Label x:Name="labelLuckName" Content="LuckName"  FontSize="{Binding ActualHeight, ElementName=gridMultipleLuck, Mode=OneWay , Converter={StaticResource FontSizeConverterMini}}" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#CC000000" Margin="0,20,0,0"/>
 
     </Grid>
 
