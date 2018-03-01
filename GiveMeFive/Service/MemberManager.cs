@@ -24,7 +24,7 @@ namespace GiveMeFive.Service
         public string name { set; get; }
 
         /// <summary>
-        /// level 0=正式 1=实习 2=劳务
+        /// level
         /// </summary>
         public int level { set; get; }
 

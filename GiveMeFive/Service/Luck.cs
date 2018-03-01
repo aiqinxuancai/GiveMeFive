@@ -22,7 +22,7 @@ namespace GiveMeFive.Service
         public int count { set; get; }
 
         /// <summary>
-        /// 允许中奖的等级 level 0=正式 1=实习 2=劳务
+        /// 允许中奖的等级 level
         /// </summary>
         public int level { set; get; }
 
